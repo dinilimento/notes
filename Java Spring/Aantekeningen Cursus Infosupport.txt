@@ -1,0 +1,58 @@
+
+Spring + JPA cursus Infosupport
+-------------------------------
+
+Java 1995, meegelift op Internethype via Applets + dynamische code
+
+Java Standard edition draait in JVM
+JVM 
+- vertaalt classfiles naar bytecode en naar platform
+- garbage collection
+- security manager
+- 
+
+Microsoft .NET -> java van microsoft
+
+Java 2000, enterprise 
+-> Gaat niet meer alleen uit van JVM, maar geeft al een aantal voorzieningen mee voor uitdagingen voor elk bedrijf
+-> standardiseren van veelvoorkomende handlingen als bijv. het mappen van URL's op methodes
+(URLs mappen naar methodes via ServletSpec)
+
+JDBC: java database connectivity
+-> moet je alsnog sql schrijven in je java applicatie
+JPA: java persistence api
+-> vanuit objecten naar DB toe
+
+JAAS: java authentication and authorisation specification
+JavaMail: mail server aansluiten
+JMS: Java messaging specificatie
+
+JEE app is eigenlijk geen app, maar een toevoeging aan een bestaande app.
+JEE beschrijft ook hoe je app moet communiceren met de bestaande componenten
+
+Java Application wordt "Application Server" genoemd
+IBM brengt hiervan Websphere uit
+Oracle Weblogic
+Tommy? Tomcat
+Application server wordt ook wel container genoemd
+
+Sun brengt een paar nieuwe goodies uit die "te geniaal" waren waardoor het gebruik niet goed ging en alles kapot ging
+
+Rod Johnson wordt architect bij Sun. Schrijft het boek "Expert One-on-One J2EE Design and Development" 
+-> hoe bouw je met JEE een goede applicatie. Geeft aan: gebruik deze dingen absoluut niet en deze dingen wel
+Later vormen de dingen die wel goed werken de basis voor het Spring framework
+
+********************
+Spring Framework 1.0
+********************
+- Op basis van POJO's
+- Dependency injection (framework)
+- AOP: Aspect oriented programming
+
+Deze drie vormen samen de Spring Core Module
+
+Gebruiken design patterns om de goede dingen uit JEE te vergemakkelijken
+Belangrijke is het Template Pattern
+
+Hierdoor wordt veel werk uit handen genomen, daardoor wordt Spring groots ten nadele van alle dure oplossingen
+
