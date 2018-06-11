@@ -1,0 +1,3 @@
+
+//Run a my-sql container
+docker run --name timodb -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql:5.7
