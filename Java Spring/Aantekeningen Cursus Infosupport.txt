@@ -101,3 +101,19 @@ Mavenproject:
 - Artefact ID: binnen bedrijf uniek zijn
 
 JDBC: checked exceptions -> worden door compiler opgevangen
+
+ORM frameworks: object relational mapping framework
+Bedoelt om af te komen van de harde koppeling via JDBC tussen objecten en DB model
+
+Bijv: Hibernate = ORM framework
+Dit is een high-level abstractie die leunt op JDBC
+
+Je hebt hiernaast bijv. ook EclipseLink (vanuit Oracle, maar gedoneerd aan open source community, doet het goed op OracleDB) of OpenJPA (goed op IBM, DB2)
+
+Als ontwikkelaar wil je daarbovenop natuurlijk nog een mogelijkheid om alles op zelfde manier te regelen:
+JPA!
+Tussen JPA en java app zit nog een entity manager die persist() kan doen en dan zou alles netjes in DB moeten komen
+
+Implementeren:
+- mvn dependency (hibernate heeft JPA aan boord)
+- config maken (main of test /resources) -> kan andere settings gebruiken voor main of test
