@@ -56,3 +56,48 @@ Belangrijke is het Template Pattern
 
 Hierdoor wordt veel werk uit handen genomen, daardoor wordt Spring groots ten nadele van alle dure oplossingen
 
+Applicatie Server = container
+Container bevat:
+- Webcontainer
+- EJB container
+
+Spring container vervangt de EJB container
+
+Webcontainer: Tomcat, Jetty, Undertow. JBoss is soort spring maar dan nog niet zo oud
+
+
+De opkomst van de relationele database:
+Abstractie van al het gezeik met files zodat je alleen nog commando hoeft te geven en het wordt opgeslagen
+Later ook de komst van de transactie waarmee allerlei safeguards ingebouwd worden
+
+Alle RDBS: API waartegen je kan aanpraten
+Client side API kan je aanspreken en die API zoekt dan de overeenkomstige server side API en geeft door`
+
+Praten tegen RDBS die in C is geschreven? Hoe moet dat vanuit Java?
+JVM is natuurlijk ook in C geschreven...
+JNI: Java Native Interface
+Hiermee kan je java code koppelen aan een variant in C code.
+JNI wordt ook uitbundig gebruik in de JRE
+
+Kan via JNI alle methodes mappen op de C methodes en dan via Client API naar RDB.
+Komt er een nieuwe DB zoals bijv. DB2? Alles opnieuw maken....
+Dat is niet handig dus: JDBC API ertussen
+Via JDBC: standaard gedragingen beschrijven en daarvoor specificeren wat er moet gebeuren op DB
+Bestaat uit Interfaces:
+- Connection
+- Statement
+- ResultSet
+En maar één klasse met gedrag:
+- Driver manager
+    -> Register methode. Als er een DB aan wordt gekoppeld bewaard de manager de connecties etc. 
+       zodat je aan de Driver manager referenties kan opvragen
+
+
+Nu kan Oracle op basis van de JDBC hun eigen JNI implementatie schrijven
+Dit heet de JDBC driver voor (oracle/db2/andere vendor of implementatie)
+
+Mavenproject:
+- Group ID: wereldwijd uniek zijn
+- Artefact ID: binnen bedrijf uniek zijn
+
+JDBC: checked exceptions -> worden door compiler opgevangen
