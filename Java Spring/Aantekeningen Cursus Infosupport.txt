@@ -117,3 +117,8 @@ Tussen JPA en java app zit nog een entity manager die persist() kan doen en dan 
 Implementeren:
 - mvn dependency (hibernate heeft JPA aan boord)
 - config maken (main of test /resources) -> kan andere settings gebruiken voor main of test
+- google naar persistence.xml 
+- object annoteren met @Entity: wordt mapping gemaakt tussen klasse en DB-tabel
+- @Id geeft aan welk attribuut het object uniek maakt
+- Transaction-type: resource JTA
+- nu nog even zelf transactie starten en committen
