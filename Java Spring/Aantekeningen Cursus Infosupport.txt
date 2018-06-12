@@ -159,5 +159,33 @@ Niet locken vooraf/bij select, maar bij mutaties kijken of je nog de juiste vers
 Zit er misschien auto-enabled row versioning in?
 Alternatief: @Entity superklasse met rowversioning
 
+Entitymanager.clear() leegt "cache" van persistence context.
+
+Junit 
+@Before setup() runt voor elke test
+@After tearDown() runt na elke test
+
+EntityManager.merge() voor toevoegen als managed entity op persistence context. Kan alleen wanneer Entity al in DB staat met dat ID.
+Geeft een managed entity terug, neemt de un-managed entity in.
+Belangrijk om te onthouden: is een entity wel of niet managed? 
+Zo ja: zodra commit is voltooid staat toestand op moment van commit in DB.
+
+JPQL: JPA Query language
+-> mogelijkheid om het over objecten te blijven houden ipv dat je de tabellen moet kennen
+
+Entity heeft als java klasse een tegenhanger als tabel in DB
+
+# Relaties
+@OneToOne -> een op een relatie
+Wanneer deze niet unidirectioneel is maar bidirectioneel kan lastig worden:
+Op DB niveau wil je normaliseren omdat je anders problemen krijgt met alles consistent houden (2 klokken weet je nooit hoe laat het is)
+Oplossing is op DB normaliseren, op JPA Active en Passive side aangeven
+De active side is in de lead (afhankelijk van context te bepalen welke kant van de relatie dat moet zijn)
+Je geeft dan een de passive side de referentie naar de andere kant van de relatie aan met "mappedBy=passiveSideEntity"
+ManyToOne relatie heeft geen optie tot mapped my aangezien de Many kant nooit passief kan zijn
+
+OneToOne wordt opgehaald met eager loading: beide zijden worden gelijk opgehaald
+OneToMany wordt opgehaald met lazy loading: passive side wordt pas opgehaald als relatie daadwerkelijk gebruikt wordt (voorkomt laden van complete db)
+
 
 
