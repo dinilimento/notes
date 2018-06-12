@@ -122,3 +122,42 @@ Implementeren:
 - @Id geeft aan welk attribuut het object uniek maakt
 - Transaction-type: resource JTA
 - nu nog even zelf transactie starten en committen
+
+IntelliJ heeft via ctrl + shift + a een optie Data Sources... en daarin kan je configureren waar je DB is zodat je via IntelliJ
+geen fouten meer krijgt op db naam
+
+Persistence.createEntityMangerFactory() doet erg veel werk, zoals:
+Persistence Unit inlezen
+Inladen klassen
+Connectie maken naar DB
+Code voor Inserts/Deletes/Updates genereren
+Screenen van tabellen en eventueel aanmaken/updaten
+Dus niet te vaak doen, want dure transactie!!!
+
+Persist commando zet een opdracht op een lijstje (persistence context)
+Flush voert commando's uit, wil je normaal eigenlijk niet doen kan als onderdeel van de commit.
+Flush zet wel locks, die blijven staan tot de commit dus nooit flushen, maar gewoon in commit.
+Commit maakt alle opdrachten echt definitief, de DB laat dit dan aan de Clients zien.
+
+Alle Entity's die op het lijstje staan als referenties worden "Managed" genoemd
+
+Voor JPA is de persistence context de waarheid. Hij leest daar altijd doorheen.
+Dus bij een find van object wat in persistence context staat zal die niet naar de DB gaan.
+Hiervoor kan je evt. de clear() methode gebruiken om de cache te legen.
+
+Je zou dus in twee runtimes lekker bezig kunnen zijn en dan in je pers. context alles gecached hebben waardoor je de waarheid (db) niet meer kent.
+Hiervoor kan je de klassen verrijken met: 
+
+@Version
+@Getter(value=AccessLevel.NONE) -> zorgen dat anderen hier af blijven, mag alleen voor DB gebruikt worden
+@Setter(value=AccessLevel.NONE) -> zorgen dat anderen hier af blijven, mag alleen voor DB gebruikt worden
+private long rowversion;
+
+Optimistic Concurrency Control:
+Niet locken vooraf/bij select, maar bij mutaties kijken of je nog de juiste versie hebt
+
+Zit er misschien auto-enabled row versioning in?
+Alternatief: @Entity superklasse met rowversioning
+
+
+
