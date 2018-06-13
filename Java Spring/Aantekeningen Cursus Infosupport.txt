@@ -2,6 +2,9 @@
 Spring + JPA cursus Infosupport
 -------------------------------
 
+
+# Dag 1 - JPA
+
 Java 1995, meegelift op Internethype via Applets + dynamische code
 
 Java Standard edition draait in JVM
@@ -123,6 +126,9 @@ Implementeren:
 - Transaction-type: resource JTA
 - nu nog even zelf transactie starten en committen
 
+
+# Dag 2 - JPA
+
 IntelliJ heeft via ctrl + shift + a een optie Data Sources... en daarin kan je configureren waar je DB is zodat je via IntelliJ
 geen fouten meer krijgt op db naam
 
@@ -187,5 +193,81 @@ ManyToOne relatie heeft geen optie tot mapped my aangezien de Many kant nooit pa
 OneToOne wordt opgehaald met eager loading: beide zijden worden gelijk opgehaald
 OneToMany wordt opgehaald met lazy loading: passive side wordt pas opgehaald als relatie daadwerkelijk gebruikt wordt (voorkomt laden van complete db)
 
+@Inheritance -> strategy opgeven. Als je niets opgeeft dan krijg je SINGLE_TABLE strategy
 
+inheritanceType.JOINED -> super genormaliseerd model
+inheritanceType.TABLE_PER_CLASS -> concrete klassen als tabel, soms dubbele info, soms niet.
+Voordeel => alleen benodigde werk voor specifieke query ipv alles ophalen
+Nadeel => als je alles wilt hebben duurt het langer
+
+
+# Dag 3 - Spring
+
+(korte herhaling, staat wellicht al hierboven beschreven)
+
+JRE -> alles om java applicaties te draaien
+JDK -> alles om java applicaties te ontwikkelen (en dus ook draaien dus heeft ook een JRE)
+        -> bevat bijvoorbeeld ook compiler en andere tools die je nodig hebt voor ontwikkelen
+
+JVM -> belangrijke dingen die die doet:
+- Garbage collection
+- Security management
+- Draaien op elk OS (Linux/Windows/MacOS)
+
+
+JEE is dezelfde weg op gegaan als Spring, maar zijn nog verschillen:
+- Spring is veel sneller met nieuwe technologien implementeren (minder afhankelijkheden)
+
+Spring is gebaseerd op vier dingen:
+- POJO based
+- Dependency Injection
+- AOP (aspect oriented programming)
+- Template pattern
+
+(einde korte herhaling)
+
+SPRING
+
+Dependency Injection
+Object wat een ander object nodig heeft (collaborator) is onhandig met new Object() vanwege:
+- unittesten lastig
+- onderhoudbaarheid wordt lastiger
+- moet wellicht allemaal dingen weten van de constructor van de collaborator
+
+Kan via:
+- XML
+- Annotaties
+- Java Config
+
+Side note:
+Maven heeft veel defaults en minder flexibel als je het wat anders wilt
+
+Spring Application Context -> lijst van alle java objecten die door spring kunnen worden behandeld
+Ook bekend als Spring Container
+
+Dependency injection in spring wordt alleen beschikbaar gemaakt voor "Spring beans"
+Aangeven welke klassen spring beans zijn kan weer via xml, annotaties en java config
+
+Via xml:
+applicationContext.xml file, daarin:
+<bean id="identifier_naam" class="package.Class"/>
+Op die manier kan de klasse die als bean aangemerkt is gebruikt worden door de Spring Container
+
+In code: ClassPathXmlApplicationContext klasse instantieren 
+Via applicationContext kan je dan een Bean ophalen met getBean(Classname.class);
+
+In bean geef je met ref= de verwijzing naar de id van andere beans
+
+<constructor-arg> constructor Dep. Inject. </constructor-arg>
+<property name="naam member" ref="id andere bean"> setter Dep. Inject. 
+
+Vragen:
+- Is spring nu een implementatie, specificatie of allebei?
+- cyclische complexiteit (nav lagen model)
+
+
+- Slimme manier om erachter te komen welke versie waar goed mee om gaat?
+    -> nee, bijhouden via blogs en zelf achter komen
+
+- zelf opzoeken: waar komt "boilerplate" vandaan...?
 
