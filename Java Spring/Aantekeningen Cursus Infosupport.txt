@@ -261,6 +261,46 @@ In bean geef je met ref= de verwijzing naar de id van andere beans
 <constructor-arg> constructor Dep. Inject. </constructor-arg>
 <property name="naam member" ref="id andere bean"> setter Dep. Inject. 
 
+Autowiring: wanneer object een interface implementeerd wil je dat de container dit alvast uitzoekt
+Scheelt hoop XML/handmatig werk
+
+SpringContainer start pas op als die in z'n geheel consistent is.
+
+Autowire kan niet bij meerdere kandidaten die voor de autowire in aanmerking komen.
+Oplossing: aangeven welke niet voor autowire gebruikt wordt, of juist wel (twee manieren)
+
+Life-cycle Callbacks
+Zorgen dat dependecies goed ingeregeld zijn voordat methoden kunnen worden uitgevoerd.
+Is te configureren via xml/java config en vast ook met annotaties
+
+Met @Configuration boven klasse geef je aan dat in die klasse springbeans definitions zitten.
+Springbean definieren door @Bean boven methodes waarbij de return elementen de klasse is die de bean moet worden.
+Bijv.
+
+@Bean
+public PrinterService printerService(){
+    return new ConsolePrinter();
+}
+
+--> Wat gebeurd er als je dit doet?????
+@Bean
+public PrinterService printerService(){
+    return new ConsolePrinter();
+}
+
+@Bean
+public PrinterService printerService(){
+    return new FilePrinter();
+}
+
+Spring Beans zijn singleton by default -> als er al ref beschikbaar is krijg je diezelfde ref terug.
+
+Factory Bean pattern: Bean initialiseren en die bean vervolgens andere beans laten maken. Die andere beans kan je dan teruggeven als lijstje
+Lijstje zelf is dan opzich ook een bean die je dus kan opvragen.
+
+
+
+
 Vragen:
 - Is spring nu een implementatie, specificatie of allebei?
 - cyclische complexiteit (nav lagen model)
