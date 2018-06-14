@@ -298,12 +298,71 @@ Spring Beans zijn singleton by default -> als er al ref beschikbaar is krijg je 
 Factory Bean pattern: Bean initialiseren en die bean vervolgens andere beans laten maken. Die andere beans kan je dan teruggeven als lijstje
 Lijstje zelf is dan opzich ook een bean die je dus kan opvragen.
 
+# Dag 4 - Spring
+
+Scopes
+- Singleton
+    Één instantie van de bean, dependencies worden gedeeld
+- Prototype
+    Nieuwe instantie voor elk 'injection point'
+- Prototype + method injection
+    Nieuwe instantie voor elke call van de injected method
+
+Web only scopes:
+- Request
+    Instance per HTTP request
+- Session
+    Instance per HTTP session
+
+
+Geheugenindeling:
+Heap -> objecten die worden aangemaakt worden op de heap gezet (garbage collector kijkt wat nog wordt gebruikt en maakt deze ruimte vrij)
+Stack -> de lokale data voor de methoden van een object en referenties naar andere objecten in de heap
+Data
+Code
+
+
+Spring beans definieren:
+@Component boven de klasse zetten
+is hetzelfde als in @Configuration een @Bean toevoegen met de juiste DI
+
+@ComponentScan kan je doen in @Configuration en dan packages aangeven, dus je kan een hybride oplossing kiezen met zowel annotaties als java config
+
+@Component alternatieven:
+- @Repository (beans gerelateerd aan DB access)
+- @Service (beans die services aanbieden)
+- @Controller (beans die webafhandeling kunnen doen)
+
+
+@Autowired kan je plaatsen op:
+- veld (field injection)
+        @Autowired
+        private Printerservice printerService;
+
+- constructor (constructor injection)
+        @Autowired
+        public ConstructorDI( Printerservice printerService){
+            this.printerService = printerService;
+        }
+
+- setter (setter injection)
+        @Autowired
+        public void setPrinterService( Printerservice printerService){
+            this.printerService = printerService;
+        }
+
+
+Meerdere configs kan je in één @Configuration onderbrengen met @Import(Configclass1.class, Configclass2.class)
 
 
 
 Vragen:
 - Is spring nu een implementatie, specificatie of allebei?
 - cyclische complexiteit (nav lagen model)
+- 3e manier van dependency injection (constructor, setter en ...)
+- Wanneer is iets een "bean"? (serializable, pojo, ...?)
+- Hoe werkt "reflectie"?
+- Hoe werkt strategypattern samen met DI van spring (@Component)
 
 
 - Slimme manier om erachter te komen welke versie waar goed mee om gaat?
