@@ -354,6 +354,19 @@ is hetzelfde als in @Configuration een @Bean toevoegen met de juiste DI
 
 Meerdere configs kan je in één @Configuration onderbrengen met @Import(Configclass1.class, Configclass2.class)
 
+AOP Aspect Oriented Programming
+Aspecten die je graag wilt hergebruiken kan je zo invoegen in klassen (zonder van -multiple-inheritance gebruik te maken)
+Spring doet hier niet "weaving", maar gebruikt het "proxy-model" waarbij een soort kopie wordt getrokken.
+In de kopie worden dan de te hergebruiken aspecten rondom de methode van het originele object geplaatst. 
+Het originele object doet nog steeds het werk en komt dan weer terug in de kopie. 
+De kopie retourneerd uiteindelijk naar de client.
+
+Belangrijke termen:
+- Join point: punt waarop wordt ingegrepen (aspect inbrengen)
+- Advice: actie die je op het punt onderneemt en wanneer je dit doet (around (voor en na), before, after)
+- Pointcut: manier om meerdere joinpoints aan te kunnen wijzen
+
+
 
 
 Vragen:
@@ -369,4 +382,4 @@ Vragen:
     -> nee, bijhouden via blogs en zelf achter komen
 
 - zelf opzoeken: waar komt "boilerplate" vandaan...?
-
+- zelf opzoeken: nodejs "reveal" package om vanuit markdown presentaties te "hosten"
