@@ -298,7 +298,9 @@ Spring Beans zijn singleton by default -> als er al ref beschikbaar is krijg je 
 Factory Bean pattern: Bean initialiseren en die bean vervolgens andere beans laten maken. Die andere beans kan je dan teruggeven als lijstje
 Lijstje zelf is dan opzich ook een bean die je dus kan opvragen.
 
+
 # Dag 4 - Spring
+
 
 Scopes
 - Singleton
@@ -367,19 +369,44 @@ Belangrijke termen:
 - Pointcut: manier om meerdere joinpoints aan te kunnen wijzen
 
 
+# Dag 5 - Spring
+
+
+JDBC had heel veel checked exceptions (compiler dwingt af dat je die lokaal afhandelt of doorgooit en later afhandelt)
+    -> dit zorgt voor erg veel werk
+Spring legt hier met JDBCtemplate een oplossing voor neer
+Door DB specifieke exceptions te abstraheren naar een generiek DB exception mechanisme
+
+Spring Boot
+In Maven de dependency ophalen, maar ook de parent. De parent regelt dan in dat alle spring dependencies de juiste versie hebben
+Parent heeft dus de versie, de dependencies zelf kan je versieloos laten.
+
+implements CommandLineRunner -> nog voor er business logica wordt uitgevoerd zal de code van de 'run' methode worden uitgevoerd.
+Zo kan je dingen initialiseren
+
+Spring maakt van complete pakket een "fat jar", daarin zitten alle dependencies al.
+
+DevTools heeft al een h2 in-memory DB mee die standaard onder localhost:8080/h2-console wordt opengesteld
+
+
 
 
 Vragen:
 - Is spring nu een implementatie, specificatie of allebei?
 - cyclische complexiteit (nav lagen model)
 - 3e manier van dependency injection (constructor, setter en ...)
-- Wanneer is iets een "bean"? (serializable, pojo, ...?)
-- Hoe werkt "reflectie"?
+
+
 - Hoe werkt strategypattern samen met DI van spring (@Component)
-
-
-- Slimme manier om erachter te komen welke versie waar goed mee om gaat?
-    -> nee, bijhouden via blogs en zelf achter komen
 
 - zelf opzoeken: waar komt "boilerplate" vandaan...?
 - zelf opzoeken: nodejs "reveal" package om vanuit markdown presentaties te "hosten"
+- zelf verder uitzoeken: wanneer is iets een "bean"? (serializable, pojo, ...?) en hoe verhoudt zich dit tot een Spring Bean?
+
+
+V Hoe werkt "reflectie"?
+    -> at runtime kan je in sommige talen (java) via de metadata alles uit een methode te lezen, ook private velden en methoden
+        -> met reflectie kun je deze dan ook daadwerkelijk aanroepen/gebruiken (https://stackoverflow.com/questions/37628/what-is-reflection-and-why-is-it-useful)
+        
+V Slimme manier om erachter te komen welke versie waar goed mee om gaat?
+    -> nee, bijhouden via blogs en zelf achter komen

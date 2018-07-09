@@ -1,3 +1,13 @@
 
 //Run a my-sql container
 docker run --name name-db -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql:5.7
+
+//Docker clean slate
+#!/bin/bash
+# Stop all containers
+docker stop $(docker ps -a -q)
+# Delete all containers
+docker rm $(docker ps -a -q)
+# Delete all images
+docker rmi $(docker images -q)
+
